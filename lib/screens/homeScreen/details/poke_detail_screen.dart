@@ -74,6 +74,7 @@ class PokeDetail extends StatelessWidget {
           child: SizedBox(
             height: 150,
             child: PageView.builder(
+                    controller: PageController(initialPage: this.index, keepPage: false),
                     onPageChanged: (index) {
                       _pokeApiStore.setActualPokemon(index: index);
                     },
