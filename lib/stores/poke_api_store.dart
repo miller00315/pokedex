@@ -42,7 +42,6 @@ abstract class _PokeApiStoreBase with Store {
 
   @action
   setActualPokemon({int index}) {
-    print(index);
     _actualPokemon = _pokeApi.pokemon[index];
     _pokemonActualColor = ConstsAPI.getColorType(type: _actualPokemon.type[0]);
   }

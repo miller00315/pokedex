@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:pokedex/consts/consts_api.dart';
@@ -14,10 +15,6 @@ class PokeDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _pokeApiStore = Provider.of<PokeApiStore>(context);
-
-    //Pokemon _pokemon = _pokeApiStore.actualPokemon;
-
-    //final _pokemonColor = ConstsAPI.getColorType(type: _pokemon.type[0]);
 
     return (Scaffold(
       appBar: PreferredSize(
@@ -76,20 +73,23 @@ class PokeDetail extends StatelessWidget {
         Padding(
           child: SizedBox(
             height: 150,
-            child: Observer(
-              builder: (BuildContext context) {
-                return (PageView.builder(
+            child: PageView.builder(
                     onPageChanged: (index) {
                       _pokeApiStore.setActualPokemon(index: index);
                     },
                     itemCount: _pokeApiStore.pokeApi.pokemon.length,
                     itemBuilder: (BuildContext contex, int index) {
-                      return _pokeApiStore.getImage(
-                          number: _pokeApiStore
-                              .getPokemon(index: index)
-                              .num
-                              .toString());
-                    }));
+                      return Observer(
+                          builder: (context) => CachedNetworkImage(
+                                height: 80,
+                                width: 80,
+                                placeholder: (context, url) => Container(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                imageUrl:
+                                    'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${_pokeApiStore.getAtualPokemon.num}.png',
+                              ));
+                    
               },
             ),
           ),
