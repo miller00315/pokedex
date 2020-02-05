@@ -82,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                                                 builder:
                                                     (BuildContext context) =>
                                                         PokeDetail(
-                                                  index: index,
+                                                 // index: index,
                                                 ),
                                               ));
                                         },
