@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:pokedex/models/poke_api.dart';
-import 'package:pokedex/screens/homeScreen/details/poke_detail_screen.dart';
+import 'package:pokedex/screens/detailsScreen/poke_detail_screen.dart';
 import 'package:pokedex/screens/homeScreen/widgets/poke_item.dart';
 import 'package:provider/provider.dart';
 import '../../consts/consts_app.dart';
@@ -82,9 +82,10 @@ class HomeScreen extends StatelessWidget {
                                                 builder:
                                                     (BuildContext context) =>
                                                         PokeDetail(
-                                                  index: index,
-                                                ),
-                                              ));
+                                                            index: index,
+                                                          ),
+                                                    ),
+                                              );
                                         },
                                       )));
                                 }))

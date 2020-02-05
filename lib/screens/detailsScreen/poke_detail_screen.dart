@@ -74,22 +74,21 @@ class PokeDetail extends StatelessWidget {
           child: SizedBox(
             height: 150,
             child: PageView.builder(
-                    onPageChanged: (index) {
-                      _pokeApiStore.setActualPokemon(index: index);
-                    },
-                    itemCount: _pokeApiStore.pokeApi.pokemon.length,
-                    itemBuilder: (BuildContext contex, int index) {
-                      return Observer(
-                          builder: (context) => CachedNetworkImage(
-                                height: 80,
-                                width: 80,
-                                placeholder: (context, url) => Container(
-                                  child: CircularProgressIndicator(),
-                                ),
-                                imageUrl:
-                                    'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${_pokeApiStore.getAtualPokemon.num}.png',
-                              ));
-                    
+              onPageChanged: (index) {
+                _pokeApiStore.setActualPokemon(index: index);
+              },
+              itemCount: _pokeApiStore.pokeApi.pokemon.length,
+              itemBuilder: (BuildContext contex, int index) {
+                return Observer(
+                    builder: (context) => CachedNetworkImage(
+                          height: 80,
+                          width: 80,
+                          placeholder: (context, url) => Container(
+                            child: CircularProgressIndicator(),
+                          ),
+                          imageUrl:
+                              'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${_pokeApiStore.getAtualPokemon.num}.png',
+                        ));
               },
             ),
           ),
